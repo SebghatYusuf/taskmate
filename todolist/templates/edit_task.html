@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+    <form action="" method="POST" class="row ">
+        {% csrf_token %}
+        <label class="col-lg-2"> </label>
+        <input type="text" class="form-control col-lg-6" name="task" value="{{task.task}}" placeholder="New Task">
+        <input type="hidden" name="done" value="{{task.done}}">
+        <button class="btn btn-primary col-lg-2">Submit</button>
+    </form>
+
+
+</div>
+
+
+
+{% endblock content %}
