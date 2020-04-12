@@ -1,2 +1,16 @@
 *.pyc
 .code-workspace
+
+
+#environments 
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+/env
+
+/__pycache__
