@@ -1,5 +1,6 @@
 *.pyc
 *.code-workspace
+/.vscode
 
 
 #environments 
