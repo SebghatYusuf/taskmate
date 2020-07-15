@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href={% static 'images/logo.png' %} />
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
 
@@ -67,16 +67,15 @@
           {% if user.is_authenticated %}
 
 
-          <a href="{% url 'logout' %}"> <button class="btn btn-primary" type="button" data-ripple-color="dark">
-              Sign Out
+          <a href="{% url 'logout' %}"> <button class="btn btn-secondary" type="button" data-ripple-color="dark">
+            <i class="fas fa-sign-out-alt"></i>    Sign Out
             </button> </a>
           {% else %}
-          <a href="{% url 'register' %}"> <button class="btn btn-primary mr-1" type="button"
-              data-ripple-color="dark">
+          <a href="{% url 'register' %}"> <button class="btn btn-primary mr-1" type="button" data-ripple-color="dark">
               Sign Up
             </button> </a>
           <a href="{% url 'login' %}"> <button class="btn btn-secondary" type="button" data-ripple-color="dark">
-              Log In
+            <i class="fas fa-sign-in-alt"></i>    Log In
             </button></a>
           {% endif %}
 

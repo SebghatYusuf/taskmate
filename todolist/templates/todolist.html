@@ -11,20 +11,21 @@
     {% if messages %}
     <br>
     {% for message in messages %}
-    <div class="alert alert-info alert-dismissable fade show" role="alert">{{message}}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    {{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
-    </div>
+      </div>
 
     {% endfor %}
     {% endif %}
     <br>
-    <form action="" method="POST" class="row ">
+    <form method="POST" class="row m-1">
         {% csrf_token %}
         <label class="col-lg-4"> </label>
         <input type="text" class="form-control col-lg-6" name="task" id="task" placeholder="New Task">
-        <button class="btn btn-primary mt-2 col-lg-2">Submit</button>
+        <button class="btn btn-primary mt-2 col-lg-2"> <i class="far fa-paper-plane"></i> Submit</button>
     </form>
     <br>
 
@@ -40,25 +41,26 @@
         <tbody>
             {% if all_tasks %}
             {% for obj in all_tasks %}
-                {% if obj.done %}
+            {% if obj.done %}
             <tr class=" table-success">
                 <td class="col-7"><del>{{obj.task}}</del></td>
-                <td class="col-3" class="table-success"> 
+                <td class="col-3" class="table-success">
                     <a class="btn btn-secondary" href={% url 'pending-task' obj.id %}> Mark this task as pending</a>
                 </td>
-                <td class="col-1"><a class="btn btn-warning"  href={% url 'edit-task' obj.id %}> Edit</a></td>
+                <td class="col-1"><a class="btn btn-warning" href={% url 'edit-task' obj.id %}> Edit</a></td>
                 <td class="col-1"><a class="btn btn-danger" href={% url 'delete-task' obj.id %}> Delete</a></td>
             </tr>
             {% else %}
-             <tr class="">
+            <tr class="">
                 <td class="col-7">{{obj.task}}</td>
-                <td class="col-3" class="table-success"> 
-                    <a class="btn btn-secondary" href="{% url 'complete-task' obj.id %}"> Mark this task as completed</a>
+                <td class="col-3" class="table-success">
+                    <a class="btn btn-secondary" href="{% url 'complete-task' obj.id %}"> Mark this task as
+                        completed</a>
                 </td>
-                <td class="col-1"><a class="btn btn-warning"  href="{% url 'edit-task' obj.id %}"> Edit</a></td>
+                <td class="col-1"><a class="btn btn-warning" href="{% url 'edit-task' obj.id %}"> Edit</a></td>
                 <td class="col-1"><a class="btn btn-danger" href="{% url 'delete-task' obj.id %}"> Delete</a></td>
             </tr>
-                {% endif %}
+            {% endif %}
             {% endfor %}
             {% endif %}
 
@@ -67,20 +69,19 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item">
-                <a class="page-link" href="?pg=1" tabindex="-1"> << </a>
-            </li>
-
-            {% if all_tasks.has_previous %}
-            <li class="page-item"><a class="page-link" href="?pg={{all_tasks.previous_page_number}}"> {{all_tasks.previous_page_number}} </a></li> 
+                <a class="page-link" href="?pg=1" tabindex="-1">
+                    << </a> </li> {% if all_tasks.has_previous %} <li class="page-item"><a class="page-link"
+                            href="?pg={{all_tasks.previous_page_number}}"> {{all_tasks.previous_page_number}} </a></li>
             {% endif %}
-            
-            <li class="page-item"><a class="page-link" href="?pg={{all_tasks.number}}"> {{all_tasks.number}} </a></li> 
+
+            <li class="page-item"><a class="page-link" href="?pg={{all_tasks.number}}"> {{all_tasks.number}} </a></li>
 
             {% if all_tasks.has_next %}
-            <li class="page-item"><a class="page-link" href="?pg={{all_tasks.next_page_number}}"> {{all_tasks.next_page_number}} </a></li> 
-            {% endif %}           
+            <li class="page-item"><a class="page-link" href="?pg={{all_tasks.next_page_number}}">
+                    {{all_tasks.next_page_number}} </a></li>
+            {% endif %}
 
-             <li class="page-item">
+            <li class="page-item">
                 <a class="page-link" href="?pg={{all_tasks.paginator.num_pages}}"> >> </a>
             </li>
         </ul>

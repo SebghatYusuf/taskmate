@@ -17,6 +17,9 @@ def index(request):
 def todolist(request):
     if request.method == "POST":
         print(request.method, request.POST)
+        if request.POST.get('task') == '':
+            messages.warning(request, ("Empty input, please enter something. "))
+            return redirect('todo-list')
         form = TaskForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -51,6 +54,7 @@ def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     if task.user == request.user:
         task.delete()
+        messages.warning(request, (f"{task.task} Deleted!"))
         return redirect("todo-list")
     else:
         messages.warning(request, ("Your Not Allowed!"))
