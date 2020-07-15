@@ -67,15 +67,15 @@
           {% if user.is_authenticated %}
 
 
-          <a href="{% url 'logout' %}"> <button class="btn btn-outline-primary" type="button" data-ripple-color="dark">
+          <a href="{% url 'logout' %}"> <button class="btn btn-primary" type="button" data-ripple-color="dark">
               Sign Out
             </button> </a>
           {% else %}
-          <a href="{% url 'register' %}"> <button class="btn btn-outline-primary mr-1" type="button"
+          <a href="{% url 'register' %}"> <button class="btn btn-primary mr-1" type="button"
               data-ripple-color="dark">
               Sign Up
             </button> </a>
-          <a href="{% url 'login' %}"> <button class="btn btn-outline-secondary" type="button" data-ripple-color="dark">
+          <a href="{% url 'login' %}"> <button class="btn btn-secondary" type="button" data-ripple-color="dark">
               Log In
             </button></a>
           {% endif %}
