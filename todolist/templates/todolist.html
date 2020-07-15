@@ -24,13 +24,13 @@
         {% csrf_token %}
         <label class="col-lg-4"> </label>
         <input type="text" class="form-control col-lg-6" name="task" id="task" placeholder="New Task">
-        <button class="btn btn-primary col-lg-2">Submit</button>
+        <button class="btn btn-primary mt-2 col-lg-2">Submit</button>
     </form>
     <br>
 
-    <table class="table ">
-        <thead class="thead-dark">
-            <tr class="row">
+    <table class="table">
+        <thead>
+            <tr class="">
                 <th class="col-7">Task</th>
                 <th class="col-3">Done</th>
                 <th class="col-1">Edit</th>
@@ -41,7 +41,7 @@
             {% if all_tasks %}
             {% for obj in all_tasks %}
                 {% if obj.done %}
-            <tr class="row table-success">
+            <tr class=" table-success">
                 <td class="col-7"><del>{{obj.task}}</del></td>
                 <td class="col-3" class="table-success"> 
                     <a class="btn btn-secondary" href={% url 'pending-task' obj.id %}> Mark this task as pending</a>
@@ -50,7 +50,7 @@
                 <td class="col-1"><a class="btn btn-danger" href={% url 'delete-task' obj.id %}> Delete</a></td>
             </tr>
             {% else %}
-             <tr class="row">
+             <tr class="">
                 <td class="col-7">{{obj.task}}</td>
                 <td class="col-3" class="table-success"> 
                     <a class="btn btn-secondary" href="{% url 'complete-task' obj.id %}"> Mark this task as completed</a>

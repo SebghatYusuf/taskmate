@@ -20,40 +20,127 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex; flex-direction: row;">
+
+  {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" width="24" height="24">
-        Task Mate </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">Brand</a>
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href={% url 'todo-list' %}> Todo List</a>
-          <a class="nav-item nav-link" href={% url 'contact' %}> Contact</a>
-          <a class="nav-item nav-link" href={% url 'about' %}> About</a>
-          {% if user.is_authenticated %}
-          <div class="form-inline flex p-1 my-2 my-lg-0" style="align-self: flex-end; margin: auto;">
-            <div class="text-light ">Logged In as {{user.username}}</div>
-            <a href={% url 'logout' %}>
-              <buttton class="btn m-1 btn-info">Log Out</buttton>
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <!-- Navbar dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-expanded="false">
+              Dropdown
             </a>
-            {% else %}
-            <a href={% url 'login' %}>
-              <buttton class="btn m-1 btn-success">Log In</buttton>
-            </a>
-            <a href={% url 'register' %}>
-              <buttton class="btn m-1 btn-primary">Register</buttton>
-            </a>
-          </div>
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <!-- Left links -->
 
-          {% endif %}
-        </div>
+        <!-- Search form -->
+        <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control" placeholder="Type query" aria-label="Search" />
+          <button class="btn btn-outline-primary" type="button" data-ripple-color="dark">
+            Search
+          </button>
+        </form>
       </div>
+      <!-- Collapsible wrapper -->
     </div>
+    <!-- Container wrapper -->
+  </nav> {% endcomment %}
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" width="24" height="24">
+        Task Mate </a>
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={% url 'todo-list' %}>Todo List</a>
+          </li>
+          <!-- Navbar dropdown -->
+
+          <li class="nav-item">
+            <a class="nav-link disabled" href={% url 'contact' %} aria-disabled="true" ">Contact</a>
+          </li>
+          <li class=" nav-item">
+              <a class="nav-link disabled" href={% url 'about' %} aria-disabled="true">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-expanded="false">
+            </a>
+          </li>
+        </ul>
+        <!-- Left links -->
+
+        <!-- Search form -->
+        <form class="d-flex input-group w-auto">
+          {% if not user.is_authenticated %}
+
+
+          <button class="btn btn-outline-primary" type="button" data-ripple-color="dark">
+            Sign Out
+          </button>
+          {% else %}
+          <button class="btn btn-outline-primary mr-1" type="button" data-ripple-color="dark">
+            Register
+          </button>
+          <button class="btn btn-outline-secondary" type="button" data-ripple-color="dark">
+            Login
+          </button>
+          {% endif %}
+
+        </form>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
   </nav>
 
   {% block content %}
