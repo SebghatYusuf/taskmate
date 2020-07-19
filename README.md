@@ -1,7 +1,10 @@
 # Takemate
  
 ## A simple Django app 
-Simple django app used material design bootstrap for the frontend.
+Simple Task keeper app based on Material Design Bootstrap 5
 
 ## Live
-[Taskmate app live on heroku](https://mytaskmate.herokuapp.com)
+[Taskmate app live on Heroku](https://mytaskmate.herokuapp.com)
+
+## Feel free to contact me
+sebghatyusuf@gmail.com
